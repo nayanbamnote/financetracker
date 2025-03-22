@@ -18,7 +18,7 @@ function IncomeList() {
     const result = await db
       .select({
         ...getTableColumns(Incomes),
-        totalSpend: sql`sum(${Expenses.amount})`.mapWith(Number),
+        totalSpend: sql`sum(CAST(${Expenses.amount} AS NUMERIC))`.mapWith(Number),
         totalItem: sql`count(${Expenses.id})`.mapWith(Number),
       })
       .from(Incomes)

@@ -10,21 +10,21 @@ function Header() {
     <div className="p-5 flex justify-between items-center border shadow-sm">
       <div className="flex flex-row items-center">
         <Image src={"/chart-donut.svg"} alt="logo" width={40} height={25} />
-        <span className="text-blue-800  font-bold text-xl">FinanSmart</span>
+        <span className="text-blue-800  font-bold text-xl">Wealth Watch</span>
       </div>
       {isSignedIn ? (
-        <UserButton />
-      ) : (
-        <div className="flex gap-3  items-center">
+        <div className="flex gap-3 items-center">
           <Link href={"/dashboard"}>
             <Button variant="outline" className="rounded-full">
               Dashboard
             </Button>
           </Link>
-          <Link href={"/sign-in"}>
-            <Button className="rounded-full">Get Started</Button>
-          </Link>
+          <UserButton />
         </div>
+      ) : (
+        <Link href={"/sign-in"}>
+          <Button className="rounded-full">Get Started</Button>
+        </Link>
       )}
     </div>
   );

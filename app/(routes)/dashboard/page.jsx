@@ -24,8 +24,7 @@ function Dashboard() {
     const result = await db
       .select({
         ...getTableColumns(Budgets),
-
-        totalSpend: sql`sum(${Expenses.amount})`.mapWith(Number),
+        totalSpend: sql`sum(CAST(${Expenses.amount} AS NUMERIC))`.mapWith(Number),
         totalItem: sql`count(${Expenses.id})`.mapWith(Number),
       })
       .from(Budgets)
